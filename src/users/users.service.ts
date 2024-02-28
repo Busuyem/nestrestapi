@@ -76,5 +76,9 @@ export class UsersService {
             id: userByHighestId[0].id + 1,
             ...user
         }
+
+        this.users.push(newUser);
+
+        return newUser;
     }
 }
