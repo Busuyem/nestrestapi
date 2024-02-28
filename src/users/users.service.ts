@@ -69,7 +69,7 @@ export class UsersService {
         return user;
     }
 
-    createUser(user: {name: string, email: string, phone: string, role: 'INTERN' | 'ENGINEER' | 'NURSE' | 'DOCTOR' | 'ENGINEER'})
+    createUser(user: {name: string, email: string, phone: string, role: 'INTERN' | 'ENGINEER' | 'NURSE' | 'DOCTOR' | 'ENGINEER' | 'TEACHER'})
     {
         const userByHighestId = [...this.users].sort((a,b) => b.id - a.id);
         const newUser = {
@@ -81,4 +81,19 @@ export class UsersService {
 
         return newUser;
     }
+
+    updateUser(id: number, updatedUser: { name?: string, email?: string, phone?: string, role?: 'INTERN' | 'ENGINEER' | 'DOCTOR' | 'TEACHER' | 'NURSE' | 'ADMIN'} )
+    {
+        this.users = this.users.map(user => {
+            if(user.id === id){
+                return {...user, ...updatedUser} //user returns all the properties of the matched object while updatedUser returns the filed that needs to be updated
+            }
+
+            return user;
+        })
+
+        return this.findOne(id);
+    }
+
+    
 }
