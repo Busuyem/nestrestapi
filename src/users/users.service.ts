@@ -1,4 +1,65 @@
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
-export class UsersService {}
+export class UsersService {
+    private users = [
+        {
+            "id": 1,
+            "name": "James",
+            "email": "james@gmail.com",
+            "phone": "0911011",
+            'role': 'INTERN'
+        },
+
+        {
+            "id": 2,
+            "name": "Kenny",
+            "email": "kenny@gmail.com",
+            "phone": "0921011",
+            'role': 'ENGINEER'
+        },
+
+        {
+            "id": 3,
+            "name": "Marrow",
+            "email": "marrow@gmail.com",
+            "phone": "081022",
+            'role': 'DOCTOR'
+        },
+
+        {
+            "id": 4,
+            "name": "Doe",
+            "email": "doe@gmail.com",
+            "phone": "0911044",
+            'role': 'NURSE'
+        },
+
+        {
+            "id": 5,
+            "name": "Mike",
+            "email": "mike@gmail.com",
+            "phone": "0911055",
+            'role': 'TEACHER'
+        },
+
+        {
+            "id": 5,
+            "name": "Titty",
+            "email": "titty@gmail.com",
+            "phone": "0911066",
+            'role': 'ADMIN'
+        }
+
+
+    ]
+
+    findAll(role?: 'INTERN' | 'TEACHER' | 'NURSE' | 'DOCTOR' | 'ENGINEER')
+    {
+        if(role){
+            return this.users.filter(user => user.role == role);
+        }
+
+        return this.users;
+    }
+}
