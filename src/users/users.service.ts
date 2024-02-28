@@ -44,7 +44,7 @@ export class UsersService {
         },
 
         {
-            "id": 5,
+            "id": 6,
             "name": "Titty",
             "email": "titty@gmail.com",
             "phone": "0911066",
@@ -98,7 +98,7 @@ export class UsersService {
     deleteUser(id: number)
     {
         const removedUser = this.findOne(id);
-        
+
         this.users = this.users.filter(user => user.id !== id);
 
         return removedUser;
